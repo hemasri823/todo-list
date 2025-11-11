@@ -1,51 +1,65 @@
-//constants declared for input button and atsk list area
-const taskInput=document.querySelector("#newtask input");
-const taskSection=document.querySelector(".tasks");
-//listener for the enter key.Use to add a new task
-taskInput.addEventListener("keyup",(e)=>{
-    if(e.key=="Enter"){
-        createTask();
-    }
-});
-//the onclick event  for the add option
-document.querySelector("#push").onclick=function(){
-    createTask();
-}
-//the function that creates a task
-function createTask(){
-    if(taskInput.value.length==0){
-        alert("The task field is blank.Enter a task name and try again");
-    }
+const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+const addBtn = document.getElementById("addBtn");
+function toggleTheme() {
+  document.body.classList.toggle("light-mode");
 
-    else{
-    //this block inserts Html taht creates each intothe task area div element
-    taskSection.innerHTML+=
-    `<div class="task">
-    <label id="taskname">
-    <input onclick="updateTask(this)" type="checkbox" id="check-task">
-    <p>${taskInput.value
-    }</p>
-    </label>
-    <div class="delete">
-    <i class="uil uil-trash"></i></div></div>`;
-    var current_tasks=document.querySelectorAll(".delete");
-    for(var i=0;i<current_tasks.length;i++){
-        current_tasks[i].onclick=function(){
-            this.parentNode.remove();
-        }
-    }
-    taskSection.offsetHeight>=300
-    ? taskSection.classList.add("overflow")
-    :taskSection.classList.remove("overflow");
-     taskInput.value="";
+  const icon = document.getElementById("theme-icon");
+
+  if(document.body.classList.contains("light-mode")){
+    // Currently light mode → show moon icon
+    icon.src = "./img/moon.png";   
+  } else {
+    // Dark mode → show sun icon
+    icon.src = "./img/sun.png";  
+  }
 }
-}
-function updateTask(task){
-let taskItem=task.parentElement.lastElementChild;
-if(task.checked){
-    taskItem.classList.add("checked");
-}
-else{
-    taskItem.classList.remove("checked");
-}
+
+
+addBtn.addEventListener("click", addTask);
+taskInput.addEventListener("keyup", e => {
+  if(e.key === "Enter") addTask();
+});
+
+function addTask(){
+  const text = taskInput.value.trim();
+  if(!text){
+    alert("Please enter a task");
+    return;
+  }
+
+  const li = document.createElement("li");
+  li.className = "task";
+
+  // Task div with checkbox
+  const taskDiv = document.createElement("div");
+  taskDiv.style.display = "flex";
+  taskDiv.style.alignItems = "center";
+  taskDiv.style.gap = "8px";
+
+  // First create <p>
+  const p = document.createElement("p");
+  p.textContent = text;
+
+  // Then checkbox
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.addEventListener("click", () => {
+    p.classList.toggle("checked");
+  });
+
+  taskDiv.appendChild(checkbox);
+  taskDiv.appendChild(p);
+
+  // Delete icon
+  const deleteIcon = document.createElement("i");
+  deleteIcon.className = "uil uil-trash delete";
+  deleteIcon.addEventListener("click", () => li.remove());
+
+  li.appendChild(taskDiv);
+  li.appendChild(deleteIcon);
+
+  taskList.appendChild(li);
+
+  taskInput.value = "";
 }

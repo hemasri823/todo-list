@@ -1,122 +1,153 @@
-*,
-*:before,
-*:after{
-    padding:0;
-    margin:0;
-    box-sizing:border-box;
-}
-body{
-    height:100vh;
-    background-color: #0F62FE;
-}
-#head-text{
-    margin-top: 50px;
-    margin-left: 10px;
-    font-family: sans-serif;
-    color: #0F62FE;
-}
-.container{
-    width:40%;
-    top:30%;
-    left:50%;
-    background:white;
-    border-radius: 1px;
-    min-width: 450px;
-    position:absolute;
-    min-height: 100px;
-    transform:translate(-50%,-50%)
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins", sans-serif;
 }
 
-#newtask{
-    position:relative;
-    padding: 30px 20px;
+body{
+  background:linear-gradient(135deg, #1e293b, #0f172a);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#222;
 }
-#newtask input{
-    width:75%;
-    height: 45px;
-    padding: 12px;
-    color: #111111;
-    font-weight: 500;
-    position: relative;
-    border-radius: 5px;
-    font-family: sans-serif;
-    font-size: 15px;
-    border: 2px solid #33b1ff;
+
+.card{
+  background:#ffffff;
+  width:380px;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+  
 }
-#newtask input:focus{
-    outline:none;
-    border-color: #0d75ec;
+
+.card h2{
+  text-align:center;
+  margin-bottom:15px;
+  font-weight:600;
 }
-#newtask button{
-    position: relative;
-    float: right;
-    font-weight: 500;
-    font-size: 16px;
-    background-color: #0F62FE;
-    border: none;
-    color: white;
-    cursor: pointer;
-    outline: none;
-    width: 20%;
-    height: 45px;
-    border-radius: 5px;
-    font-family: sans-serif;
+
+.input-row{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
 }
-.tasks{
-    position: absolute;
-    border-radius: 0px;
-    width: 100%;
-    background-color: #ffffff;
-    padding: 30px 20px;
-    margin-top: 0px;
-    justify-content: space-between;
+
+.input-row input{
+  flex:1;
+  padding:10px;
+  font-size:15px;
+  border:2px solid #2e3e58;
+  border-radius:8px;
 }
-.tasks.overflow{
-    overflow-y: auto;
-    max-height: 300px;
+
+.input-row button{
+  padding:10px 18px;
+  background:#293344;
+  border:none;
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s;
 }
-.tasks::-webkit-scrollbar {
- width: 10px;
+
+.input-row button:hover{
+  background:#101520;
+  
 }
-.tasks::-webkit-scrollbar-track {
- background: #BAE6FF;
- border-radius: 25px;
+
+#taskList{
+  list-style:none;
 }
-.tasks::-webkit-scrollbar-thumb {background: #0D75EC;
- border-radius: 25px;
-}
+
 .task{
-    border-radius: 5px;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    height: 50px;
-    margin-bottom: 8px;
-    padding: 10px 10px;
-    display: flex;
-    width: 100%;
+  background:#f1f5f9;
+  padding:10px 12px;
+  border-radius:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
 }
+
+.task p{
+  margin-left:8px;
+}
+
+.checked{
+  text-decoration:line-through;
+  color:#425986;
+}
+
 .delete{
-    right: -5px;
-    padding: 5px 5px;
-    background-color: #ffffff;
-    border-radius: 4px;
-    transform-origin: top right;
-    box-shadow:0 0 6px rgba(0,0,0,0.15);
-    transition: transform 0.5sec ease;
-    z-index: 10;
+  font-size:18px;
+  color:#ef4444;
+  cursor:pointer;
 }
-#check-task{
-    margin-left: 20px;
+/* Theme Toggle Button */
+
+
+/* Light mode style */
+.light-mode{
+  background:linear-gradient(135deg, #eef2ff, #e2e8f0);
 }
-.task label{
-    font-family: sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    display: flex;
-    align-items: flex-start;
+
+.light-mode .card{
+  background:white;
+  color:black;
 }
-.task label p.checked{
-    text-decoration: line-through;
+
+.light-mode .input-row button{
+  background:#87a7da;
 }
-.task label input{margin-top:3px;}
+
+.light-mode .input-row button:hover{
+  background:#7a91c2;
+}
+
+
+/* Mobile responsiveness with animation */
+.card{
+  animation: pop 0.4s ease-in-out;
+}
+.theme-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 0;
+}
+
+.theme-btn img {
+  width: 28px;   /* icon size */
+  height: 28px;
+  object-fit: contain;
+}
+
+
+
+
+@keyframes pop{
+  0%{ transform:scale(0.8); opacity:0; }
+  100%{ transform:scale(1); opacity:1; }
+}
+
+@media(max-width:450px){
+  .card{
+    width:90%;
+    padding:20px;
+  }
+}
