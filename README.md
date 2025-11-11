@@ -8,8 +8,11 @@ A **simple, professional, dark/light themed Task Manager** web app built with **
 - Clean, modern, and responsive UI  
 
 ---
-## Live
-[Link](https://hemasri823.github.io/task-manager/)
+## 📌 Live Demo
+
+🚀 [Link](https://hemasri823.github.io/task-manager/)
+
+
 
 ---
 ## 🛠 Features
@@ -45,12 +48,20 @@ task-manager/
 
 ---
 
-## 🚀 How to Run
+🔮 Future Scope
 
-1. Clone the repository:
+-This Task Manager can be extended in the future with the following features:
 
-```bash
-git clone https://github.com/your-username/your-repo.git
-2.Open index.html in a browser
+-Allow multiple users to create accounts and manage personal task lists.
 
-3.Add tasks and toggle dark/light theme using the top-right button
+-Store tasks in Firebase, MongoDB, or SQL for persistence instead of local browser memory.
+
+-Organize tasks by priority, category, or project, making it easier to track.
+
+-Add push notifications or email reminders for pending tasks.
+
+-Enable drag-and-drop functionality to reorder tasks.
+
+-Save theme preference in local storage so it persists across sessions.
+
+-Convert this project into a mobile-friendly PWA or native app.
