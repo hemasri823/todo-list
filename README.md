@@ -48,7 +48,7 @@ task-manager/
 
 ---
 
-🔮 Future Scope
+## 🔮 Future Scope
 
 -This Task Manager can be extended in the future with the following features:
 
